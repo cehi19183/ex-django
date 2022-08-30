@@ -1,0 +1,11 @@
+{% extends '../base.html' %}
+
+{% block title %}ユーザー情報{% endblock %}
+
+{% block content %}
+<h2>{{ userprofile.user.username }}さん</h2>
+<p>学年 : {{ userprofile.grade }}</p>
+<p>学科 : {{ userprofile.department }}</p>
+
+<a href="{% url 'accounts:delete' user.id %}">アカウント削除</a>
+{% endblock %}

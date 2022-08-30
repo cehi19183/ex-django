@@ -1,0 +1,12 @@
+{% extends '../base.html' %}
+
+{% block title %}ユーザー登録{% endblock %}
+
+{% block content %}
+<div class="login-page" method="POST">
+    <form class="login-form" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="ログイン" class="input login-form__item login-form__item--btn">
+    </form>
+{% endblock %}
