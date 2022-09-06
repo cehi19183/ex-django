@@ -6,7 +6,7 @@
 <div class="login-page" method="POST">
     <form class="login-form" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form }}
         <input type="submit" value="ログイン" class="input login-form__item login-form__item--btn">
     </form>
 {% endblock %}

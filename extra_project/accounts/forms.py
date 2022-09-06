@@ -40,3 +40,12 @@ class UserLoginForm(AuthenticationForm):
         for i, field in enumerate(self.fields.values()):
             field.widget.attrs['class'] = 'input login-form__item'
             field.widget.attrs['placeholder'] = labels[i]
+
+# class UserUpdateForm(forms.ModelForm):
+#     grade = forms.CharField(label='')
+#     department = forms.EmailField(label='')
+#     image = forms.ImageField(label='')
+
+#     class Meta:
+#         model = UserProfile
+#         fields = ['grade', 'department', 'image']

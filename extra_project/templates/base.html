@@ -7,9 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
     <title>{% block title %}{% endblock %}</title>
 
@@ -20,30 +19,20 @@
         <header class="header">
             <div class="header__inner">
                 <nav class="nav">
-                    <h1 class="nav_title">日本大学工学部　掲示板</h1>
+                    <h1 class="nav__title">日本大学工学部　掲示板</h1>
                     <ul class="nav__list">
-                        <li class="nav__item"><a href="{% url 'accounts:home' %}">HOME</a></li>
+                        <li><a class="nav__item" href="{% url 'accounts:home' %}">HOME</a></li>
                         {% if user.is_authenticated %}
-                        <li class="nav__item"><a href="{% url 'accounts:profile' user.id %}">MY PAGE</a></li>
-                        <li class="nav__item"><a href="{% url 'accounts:logout' %}">LOGOUT</a></li>
+                        <li><a class="nav__item" href="{% url 'accounts:profile' user.id %}">MY PAGE</a></li>
+                        <li><a class="nav__item" href="{% url 'accounts:logout' %}">LOGOUT</a></li>
                         {% else %}
-                        <li class="nav__item"><a href="{% url 'accounts:regist' %}">REGIST</a></li>
-                        <li class="nav__item"><a href="{% url 'accounts:login' %}">LOGIN</a></li>
+                        <li><a class="nav__item" href="{% url 'accounts:regist' %}">REGIST</a></li>
+                        <li><a class="nav__item" href="{% url 'accounts:login' %}">LOGIN</a></li>
                         {% endif %}                   
                     </ul>
                 </nav>
             </div>
         </header>
-
-        {% if messages %}
-        <div class="container">
-            <div>
-                {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-            </div>
-        </div>
-        {% endif %}
 
         <main class="main">
             {% block content %}{% endblock %}

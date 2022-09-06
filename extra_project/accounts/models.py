@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import (
@@ -58,3 +59,5 @@ class UserProfile(models.Model):
         ('秘密', '秘密'),
     ]
     department = models.CharField(max_length=30, choices=DEPARTMENT_CHOICES)
+    image = models.ImageField(null=True, blank=True, upload_to='media', default=NULL)
+    message = models.TextField(max_length=100, blank=True, null=True, default='自己紹介を記入してください')

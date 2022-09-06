@@ -3,9 +3,26 @@
 {% block title %}ユーザー情報{% endblock %}
 
 {% block content %}
-<h2>{{ userprofile.user.username }}さん</h2>
-<p>学年 : {{ userprofile.grade }}</p>
-<p>学科 : {{ userprofile.department }}</p>
 
-<a href="{% url 'accounts:delete' user.id %}">アカウント削除</a>
+<div class="profile-page">
+    <div class="profile-page__card card">
+        {% if userprofile.image == 0 %}
+        <img src="/../static/media/human01.svg" class="card__img">
+        {% else %}
+        <img src="/static/{{ userprofile.image }}" class="card__img">
+        {% endif %}
+        <p class="card__name">{{ userprofile.user.username }}さん</p>
+        <p class="card_attrs">{{ userprofile.grade }}回生 {{ userprofile.department }}</p>
+    </div>
+    <div class="profile-page__text text">
+        <p class="text__head">自己紹介</p>
+        <p class="text__main">{{ userprofile.message }}</p>
+    </div>
+</div>
+
+<a href="{% url 'accounts:delete' user.id %}"><button class="btn01">アカウント削除</button></a>
+
+<br>
+<a href="{% url 'accounts:update' user.id %}">編集する</a>
+
 {% endblock %}
